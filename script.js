@@ -2,6 +2,20 @@
 
 let myLibrary = [];
 
+const addNewBookDiv = document.getElementById('addNewBook');
+const form = document.getElementById('newBookForm');
+const blocker = document.getElementsByClassName('blocker')[0];
+blocker.addEventListener('click', function(){
+    hideForm();
+});
+
+const newBookButton = document.getElementById('newBookButton');
+newBookButton.addEventListener('click', function(){
+    displayForm()
+});
+
+
+
 function Book(title, author, numOfPages, readStatus){
     this.title = title;
     this.author = author;
@@ -60,4 +74,13 @@ function displayBooks(myLibrary){
         // create bookReadStatus div and append to bookEntry
     }
 }
+
+function displayForm(){
+   addNewBookDiv.classList.add("visible");
+}
+
+function hideForm(){
+    addNewBookDiv.classList.remove("visible");
+}
+
 

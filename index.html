@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <script src='script.js'></script>
+        <script src='script.js' defer></script>
         <link rel='stylesheet' href='styles.css'>
     </head>
     <body>
@@ -9,6 +9,16 @@
             <h1>Library</h1>
         </header>
         <div id='Library'></div>
-        <button id="newBook">Add New Book</button>
+        <button id="newBookButton">Add New Book</button>
+        <div id="addNewBook">
+            <div class="blocker"></div>
+            <form id="newBookForm">
+                <input type="text" id="bookTitle" name="bookTitle" placeholder="Title">
+                <input type="text" id="bookAuthor" name="bookAuthor" placeholder="Author">
+                <input type="text" id="bookNumOfPages" name="bookNumOfPages" placeholder="# of Pages">
+                <label for="bookReadStatus">Read?</label>
+                <input type="checkbox" id="bookReadStatus" name="bookReadStatus">
+            </form>
+        </div>
     </body>
 </html>
