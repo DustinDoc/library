@@ -2,26 +2,40 @@
 
 let myLibrary = [];
 
-const addNewBookDiv = document.getElementById('addNewBook');
-const form = document.getElementById('newBookForm');
-const blocker = document.getElementsByClassName('blocker')[0];
-blocker.addEventListener('click', function(){
-    hideForm();
-});
-
-const newBookButton = document.getElementById('newBookButton');
-newBookButton.addEventListener('click', function(){
-    displayForm()
-});
-
-
-
 function Book(title, author, numOfPages, readStatus){
     this.title = title;
     this.author = author;
     this.numOfPages = numOfPages;
     this.readStatus = readStatus;
 }
+// create variables for all elements of Form popup
+const addNewBookDiv = document.getElementById('addNewBook');
+const form = document.getElementById('newBookForm');
+const blocker = document.getElementsByClassName('blocker')[0];
+const newBookButton = document.getElementById('newBookButton');
+const submitBook = document.getElementById('submitBook');
+const bookTitle = document.getElementById('bookTitle');
+const bookAuthor = document.getElementById('bookAuthor');
+const bookNumOfPages = document.getElementById('bookNumOfPages');
+const bookReadStatus = document.getElementById('bookReadStatus');
+// when you click off of form, hide
+blocker.addEventListener('click', function(){
+    hideForm();
+});
+// when you click add new book, bring up form
+newBookButton.addEventListener('click', function(){
+    displayForm()
+});
+// When you click submit, create new Book object from input
+submitBook.addEventListener('click', function(){
+    let title = bookTitle.value;
+    let author = bookAuthor.value;
+    let numOfPages = bookNumOfPages.value;
+    let readStatus = bookReadStatus.checked;
+
+    addBookToLibrary(title, author, numOfPages, readStatus);
+    hideForm();
+});
 
 function addBookToLibrary(title, author, numOfPages, readStatus){
     let newBook = Object.create(Book);
@@ -31,7 +45,16 @@ function addBookToLibrary(title, author, numOfPages, readStatus){
     newBook.readStatus = readStatus;
 
     myLibrary.push(newBook);
+    displayBooks(myLibrary);
 }
+
+function displayForm(){
+    addNewBookDiv.classList.add("visible");
+ }
+ 
+ function hideForm(){
+     addNewBookDiv.classList.remove("visible");
+ }
 
 function displayBooks(myLibrary){
     let libraryDisplay = document.getElementById('Library');
@@ -75,12 +98,6 @@ function displayBooks(myLibrary){
     }
 }
 
-function displayForm(){
-   addNewBookDiv.classList.add("visible");
-}
 
-function hideForm(){
-    addNewBookDiv.classList.remove("visible");
-}
 
 
