@@ -73,6 +73,12 @@ function toggleReadStatus(element){
     
 }
 
+function removeBook(element){
+    let entryNumber = element.parentNode.getAttribute('data-entry-number');
+    myLibrary.splice(entryNumber, 1);
+    displayBooks(myLibrary);
+}
+
 function displayBooks(myLibrary){
     let libraryDisplay = document.getElementById('Library');
     // clear all entries before looping through array to remove duplicates
@@ -120,6 +126,13 @@ function displayBooks(myLibrary){
             toggleReadStatus(this);
         });
         // create toggleReadStatus button 
+        let bookRemoveButton = document.createElement('button');
+        bookRemoveButton.className = "bookRemoveButton";
+        bookEntry.appendChild(bookRemoveButton);
+        bookRemoveButton.innerHTML = "Remove";
+        bookRemoveButton.addEventListener('click', function(){
+            removeBook(this);
+        })
     }
 }
 
