@@ -32,7 +32,7 @@ submitBook.addEventListener('click', function(){
     let author = bookAuthor.value;
     let numOfPages = bookNumOfPages.value;
     let readStatus = bookReadStatus.checked;
-
+    
     addBookToLibrary(title, author, numOfPages, readStatus);
     hideForm();
 });
@@ -52,9 +52,26 @@ function displayForm(){
     addNewBookDiv.classList.add("visible");
  }
  
- function hideForm(){
+function hideForm(){
      addNewBookDiv.classList.remove("visible");
  }
+
+function toggleReadStatus(element){
+    let entryNumber = element.parentNode.getAttribute('data-entry-number');
+    // get data-entry value to get index of book object
+    myLibrary[entryNumber].readStatus *= -1;
+    // toggle readStatus 
+    if(myLibrary[entryNumber].readStatus == 1){
+        element.innerHTML = "Read";
+        element.classList.add("read");
+    }
+    else {
+        element.innerHTML = "Not Read";
+        element.classList.remove("read");
+    }
+    // Change 
+    
+}
 
 function displayBooks(myLibrary){
     let libraryDisplay = document.getElementById('Library');
@@ -90,11 +107,19 @@ function displayBooks(myLibrary){
         bookNumOfPages.innerHTML = myLibrary[i].numOfPages;
         // create bookNumOfPages div and append to bookEntry
 
-        let bookReadStatus = document.createElement('div');
-        bookReadStatus.className = "bookReadStatus";
-        bookEntry.appendChild(bookReadStatus);
-        bookReadStatus.innerHTML = myLibrary[i].bookReadStatus;
-        // create bookReadStatus div and append to bookEntry
+        let bookReadButton = document.createElement('button');
+        bookReadButton.className = "bookReadButton";
+        bookEntry.appendChild(bookReadButton);
+        if(myLibrary[i].readStatus){
+            bookReadButton.innerHTML = "Read";
+            bookReadButton.classList.add("read");
+        }else{
+            bookReadButton.innerHTML = "Not Read";
+        }
+        bookReadButton.addEventListener('click', function(){
+            toggleReadStatus(this);
+        });
+        // create toggleReadStatus button 
     }
 }
 
