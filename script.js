@@ -54,6 +54,10 @@ function displayForm(){
  
 function hideForm(){
      addNewBookDiv.classList.remove("visible");
+     bookTitle.value = "";
+     bookAuthor.value = "";
+     bookNumOfPages.value = "";
+     bookReadStatus.checked = false;
  }
 
 function toggleReadStatus(element){
@@ -98,19 +102,19 @@ function displayBooks(myLibrary){
         let bookTitle = document.createElement('div');
         bookTitle.className = "bookTitle";
         bookEntry.appendChild(bookTitle);
-        bookTitle.innerHTML = myLibrary[i].title;
+        bookTitle.innerHTML = `Title: ${myLibrary[i].title}`;
         // create bookTitle div and append to bookEntry
 
         let bookAuthor = document.createElement('div');
         bookAuthor.className = "bookAuthor";
         bookEntry.appendChild(bookAuthor);
-        bookAuthor.innerHTML = myLibrary[i].author;
+        bookAuthor.innerHTML = `Author: ${myLibrary[i].author}`;
         // create bookAuthor div and append to bookEntry
 
         let bookNumOfPages = document.createElement('div');
         bookNumOfPages.className = "bookNumOfPages";
         bookEntry.appendChild(bookNumOfPages);
-        bookNumOfPages.innerHTML = myLibrary[i].numOfPages;
+        bookNumOfPages.innerHTML = `${myLibrary[i].numOfPages} pages`;
         // create bookNumOfPages div and append to bookEntry
 
         let bookReadButton = document.createElement('button');

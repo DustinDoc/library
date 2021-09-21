@@ -24,16 +24,14 @@ button#newBookButton{
 }
 
 div#Library{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    row-gap: 10px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
     margin-left: 10px;
     margin-right: 10px;
 }
 
 div.bookEntry{
-    flex-basis: 30%;
     border-style: solid;
     border-width: 2px;
     border-color: black;
@@ -63,16 +61,40 @@ div.bookEntry{
 }
 
 #newBookForm{
-    position: fixed;
-    height: 400px;
-    width: 400px;
+    position: relative;
+    height: 300px;
+    width: 300px;
     top: 50%;
     left: 50%;
-    background: #FFF;
+    border-radius: 10px;
+    background: #F77F00;
+    color:#003049;
     border-style: solid;
+    margin-left: -150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding: 20px;
 }
+
+#newBookForm input{
+    background-color: #EAE2B7;
+    color:#003049;
+    border-radius: 5px;
+}
+
+#submitBook{
+    padding: 10px;
+    background-color:  #FCBF49;
+}
+
 .bookReadButton{
-    background-color: red;
+    background-color: gray;
+    border-radius: 5px;
+}
+.bookRemoveButton{
+    background-color: #D62828;
+    border-radius: 5px;
 }
 .read{
     background-color: green;
