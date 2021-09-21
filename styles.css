@@ -1,5 +1,49 @@
 @charset "utf-8";
+/* Library */
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #EAE2B7;
+}
+header h1{
+    font-size: 3em;
+    color: #003049;
+    text-align: center;
+    background-color: #FCBF49;
+    margin-top: 0px;
+    margin-bottom: 15px;
+    padding: 15px;
+}
 
+button#newBookButton{
+    margin-left: 10px;
+    margin-bottom: 10px;
+    font-size: 2em;
+    padding: 10px;
+    background-color: #F77F00;
+    color: #003049;
+}
+
+div#Library{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    row-gap: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+div.bookEntry{
+    flex-basis: 30%;
+    border-style: solid;
+    border-width: 2px;
+    border-color: black;
+    border-radius: 5px;
+    text-align: center;
+    background-color: #FCBF49;
+    color: #003049;
+}
+
+/* Form */
 #addNewBook{
     visibility: hidden;
 }
